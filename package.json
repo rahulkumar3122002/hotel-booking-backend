@@ -18,5 +18,15 @@
     "mongoose": "^6.8.1",
     "nodemailer": "^6.8.0",
     "stripe": "^11.5.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulkumar3122002/hotel-booking-backend.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/rahulkumar3122002/hotel-booking-backend/issues"
+  },
+  "homepage": "https://github.com/rahulkumar3122002/hotel-booking-backend#readme"
 }
