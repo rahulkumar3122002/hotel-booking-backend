@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const port = 1001;
 mongoose.set("strictQuery", true);
 const cors = require("cors");
 
@@ -30,6 +29,6 @@ app.use("/router", require("./routers/secondroompay"));
 app.use("/router", require("./routers/deluxeroom"));
 app.use("/router", require("./routers/deluxeroompay"));
 
-app.listen(port, () => {
-  console.log(`this app is run port on ${port}`);
+app.listen(process.env.port, () => {
+  console.log(`this app is run port on ${process.env.port}`);
 });
