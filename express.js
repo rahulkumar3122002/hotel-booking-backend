@@ -4,13 +4,12 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const cors = require("cors");
 
-mongoose.connect(
-  `mongodb+srv://r:20020201045@cluster0.20iex.mongodb.net/dataTable?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+const db_link = process.env.database_connection_link;
+
+mongoose.connect(db_link, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const connection = mongoose.connection;
 connection.once("open", () => {
@@ -29,6 +28,8 @@ app.use("/router", require("./routers/secondroompay"));
 app.use("/router", require("./routers/deluxeroom"));
 app.use("/router", require("./routers/deluxeroompay"));
 
-app.listen(process.env.port, () => {
-  console.log(`this app is run port on ${process.env.port}`);
+const port = process.env.port;
+
+app.listen(port, () => {
+  console.log(`this app is run port on ${port}`);
 });
