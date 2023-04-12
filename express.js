@@ -3,10 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const cors = require("cors");
+const config = require("./config/config");
 
-const db_link = process.env.database_connection_link;
-
-mongoose.connect(db_link, {
+mongoose.connect(config.database_ink, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
