@@ -75,8 +75,8 @@ app.post("/first_room_updateamountdata/:id", async (req, res) => {
               person: updt_person,
               roomNo: updt_roomNo,
               roomType: updt_roomType,
-              checkInDate: updt_checkInDate,
-              checkOutDate: updt_checkOutDate,
+              checkInDate: updt_checkInDate || result.checkInDate,
+              checkOutDate: updt_checkOutDate || result.checkOutDate,
             },
           }
         )
