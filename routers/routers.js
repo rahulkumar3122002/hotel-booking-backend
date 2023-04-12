@@ -9,7 +9,6 @@ const jwt = require("jsonwebtoken");
 
 const transport = nodemailer.createTransport({
   service: "gmail",
-  secure: false,
   auth: {
     user: process.env.email,
     pass: process.env.email_password,
@@ -171,8 +170,8 @@ app.post("/forgot_password", async (req, res) => {
       } else {
         const maildetails = {
           from: process.env.email,
-          to: forgot_pass_email,
-          subject: "Otp for change your password.....",
+          to: result.email,
+          subject: "Otp for enter new password.....",
           text: `${otp}`,
         };
         transport.sendMail(maildetails, (error, info) => {
@@ -182,7 +181,6 @@ app.post("/forgot_password", async (req, res) => {
             console.log("email send.....", info.response);
           }
         });
-        console.log(".....", result);
         res.json({ isValid: true, message: "check email....." });
       }
     })
@@ -194,6 +192,7 @@ app.post("/forgot_password", async (req, res) => {
 
 app.post("/setpassword", async (req, res) => {
   const set_pass_email = req.body.email;
+  console.log("set_pass_email.....", set_pass_email);
   const set_pass = await bcrypt.hash(req.body.password, 10);
   await Schema.findOneAndUpdate(
     { email: set_pass_email },
