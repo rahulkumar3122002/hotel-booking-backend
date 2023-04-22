@@ -75,10 +75,7 @@ app.post("/update_data/:id", async (req, res) => {
   const update_name = req.body.name;
   const update_password = req.body.password;
   const update_address = req.body.address;
-  const update_password_bcrypt = update_password
-    ? await bcrypt.hash(update_password, 10)
-    : Schema.password;
-
+  const update_password_bcrypt = await bcrypt.hash(update_password, 10);
   Schema.findByIdAndUpdate(
     { _id: req.params.id },
     {
