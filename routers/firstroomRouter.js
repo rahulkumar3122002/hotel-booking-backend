@@ -1,5 +1,4 @@
 const express = require("express");
-// const { schema } = require("../model/firstroommodel");
 const app = new express();
 const Schema_Amount = require("../model/firstroommodel");
 
