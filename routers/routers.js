@@ -47,17 +47,28 @@ app.post("/register", async (req, res) => {
 
 app.get("/get_data", tkn_midlware, async (req, res) => {
   try {
+    // const mrgtbldt = await Schema.aggregate([
+    //   { $unionWith: { coll: "firstroomdatas" } },
+    //   { $unionWith: { coll: "secondroomdatas" } },
+    //   {
+    //     $sort: { email: 1 },
+    //   },
+    //   // {
+    //   //   $project: { email: "$email", password: "$password" },
+    //   // },
+    // ]);
+
+    // console.log("mrgtbldt.....", mrgtbldt);
     await Schema.find()
-      .then((result) => {
-        console.log("result.....", result);
-        return res.json({ isValid: true, message: result });
+      .then(async (result) => {
+        return res.json({ isValid: true, message: result, mrgtbldt });
       })
       .catch((error) => {
         console.log("error.....", error);
         return res.json({ isValid: false, message: error.message });
       });
   } catch (error) {
-    console.log("middleware error.....", error);
+    return res.json({ isValid: false, message: error });
   }
 });
 

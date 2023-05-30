@@ -5,10 +5,13 @@ mongoose.set("strictQuery", true);
 const cors = require("cors");
 const config = require("./config/config");
 
-mongoose.connect(config.database_ink, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  `mongodb+srv://r:20020201045@cluster0.20iex.mongodb.net/dataTable?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
